@@ -1,0 +1,67 @@
+[gd_scene load_steps=7 format=3 uid="uid://dp46e0ium6wqy"]
+
+[ext_resource type="Texture2D" uid="uid://dhlr4aqcxhrol" path="res://assets/tile/parallax_background/layer_1.png" id="1_jw3fp"]
+[ext_resource type="Texture2D" uid="uid://b2p6o1ve4ktrw" path="res://assets/tile/parallax_background/layer_2.png" id="2_wa62o"]
+[ext_resource type="Texture2D" uid="uid://bealmty4ey0r4" path="res://assets/tile/parallax_background/layer_3.png" id="3_ws1eo"]
+[ext_resource type="Texture2D" uid="uid://crpys4yha6lqt" path="res://assets/tile/parallax_background/layer_4.png" id="4_gls5f"]
+[ext_resource type="PackedScene" uid="uid://c3cfxxpc6aiew" path="res://scenes/env/mask.tscn" id="5_rt8uu"]
+
+[sub_resource type="GDScript" id="GDScript_q2yes"]
+script/source = "extends ParallaxBackground
+class_name Background
+
+@export var can_process: bool
+@export var layer_speed: Array[int]
+
+func _ready():
+	if can_process ==false:
+		set_physics_process(false)
+		
+func _physics_process(delta):
+	for index in get_child_count():
+		if get_child(index) is ParallaxLayer:
+			get_child(index).motion_offset.x -= delta *layer_speed[index]
+			
+"
+
+[node name="Background" type="ParallaxBackground"]
+script = SubResource("GDScript_q2yes")
+layer_speed = Array[int]([54, 47, 37, 25])
+
+[node name="Layer4" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2(320, 180)
+
+[node name="Texture" type="TextureRect" parent="Layer4"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("4_gls5f")
+
+[node name="Layer1" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.4, 0.4)
+motion_mirroring = Vector2(320, 0)
+
+[node name="Texture" type="TextureRect" parent="Layer1"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_jw3fp")
+
+[node name="Layer2" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.6, 0.6)
+motion_mirroring = Vector2(320, 0)
+
+[node name="Texture" type="TextureRect" parent="Layer2"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_wa62o")
+
+[node name="Layer3" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.8, 0.8)
+motion_mirroring = Vector2(320, 0)
+
+[node name="Texture" type="TextureRect" parent="Layer3"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("3_ws1eo")
+stretch_mode = 3
+
+[node name="Mascara" parent="." instance=ExtResource("5_rt8uu")]
