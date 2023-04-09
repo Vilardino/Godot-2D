@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://2qiuelosxuik"]
-
-[ext_resource type="TileSet" uid="uid://bvbaotqn3vmrv" path="res://resources/small_decoration_tile.tres" id="1_qeryo"]
-
-[node name="TileMap" type="TileMap"]
-tile_set = ExtResource("1_qeryo")
-cell_quadrant_size = 32
-format = 2
