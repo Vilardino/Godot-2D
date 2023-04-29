@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://2qiuelosxuik"]
+[gd_scene load_steps=7 format=3 uid="uid://2qiuelosxuik"]
 
 [ext_resource type="TileSet" uid="uid://c0kmnn5klwnpj" path="res://resources/floor.tres" id="1_4mfdy"]
 [ext_resource type="TileSet" uid="uid://b2n48arnpi358" path="res://resources/normal_decoration_tile.tres" id="2_a8c4q"]
 [ext_resource type="TileSet" uid="uid://bvbaotqn3vmrv" path="res://resources/small_decoration_tile.tres" id="3_j3pts"]
 [ext_resource type="PackedScene" uid="uid://dp46e0ium6wqy" path="res://scenes/env/background.tscn" id="4_yjfit"]
+[ext_resource type="PackedScene" uid="uid://c3cfxxpc6aiew" path="res://scenes/env/mask.tscn" id="5_wibkd"]
+[ext_resource type="PackedScene" uid="uid://cdxuks2r1sj1o" path="res://scenes/player/player.tscn" id="6_fmwab"]
 
 [node name="Level" type="Node2D"]
 
@@ -28,3 +30,9 @@ format = 2
 layer_0/tile_data = PackedInt32Array(458798, 1, 0, 458826, 1, 0, 458818, 1, 0, 327697, 1, 0, 1245204, 1, 0, 1376285, 1, 0, 458807, 0, 0, 458804, 0, 0, 1507380, 0, 0, 196630, 0, 0, 1507376, 2, 0, 1507403, 2, 0, 1376324, 2, 0, 1507372, 1, 0, 458790, 1, 0, 327691, 1, 0)
 
 [node name="Background" parent="." instance=ExtResource("4_yjfit")]
+
+[node name="Mascara2" parent="." instance=ExtResource("5_wibkd")]
+visible = false
+
+[node name="Player" parent="." instance=ExtResource("6_fmwab")]
+position = Vector2(53, 84)
